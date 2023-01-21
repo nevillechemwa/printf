@@ -1,13 +1,13 @@
 #include "main.h"
 
 /**
- * print_rot13 - cipher used for obscuring text
- * @string_dest: string to be changed
- * @string_count: index of the destination
- * @arg: va_list to be changed
- * Return: new index
+ * parse_R13 - substitute %R by argument number in rot13
+ * @buff_dest: string to change
+ * @arg: va_list char to change
+ * @buff_count: index of dst where the R of %R is
+ * Return: New index
  */
-int print_rot13(char *string_dest, va_list arg, int string_count)
+int parse_R13(char *buff_dest, va_list arg, int buff_count)
 {
 	char *str;
 	char *keys = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -21,12 +21,13 @@ int print_rot13(char *string_dest, va_list arg, int string_count)
 		{
 			if (str[j] == keys[i])
 			{
-				string_dest[string_count] = keynew[i];
+				buff_dest[buff_count] = keynew[i];
 				break;
 			}
-			string_dest[string_count] = str[j];
+			buff_dest[buff_count] = str[j];
 		}
-		j++, string_count++;
+		j++, buff_count++;
 	}
-	return (string_count);
+
+	return (buff_count);
 }
