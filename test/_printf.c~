@@ -1,0 +1,47 @@
+#include "main.h"
+void print_buffer(char buffer[], int *index);
+/**
+ *_printf- Function like printf
+ *@format:character string
+ *Return: characters printed
+ */
+int _printf(const char *format, ...)
+{
+	int i, index, chars = 0;
+
+	va_list ap;
+	char buffer[size];
+
+	if (format == NULL)
+		return;
+	va_start(ap, format);
+
+	for (i = 0; format && format[i] != '\0'; i++)
+	{
+		if (format[i] != '%')
+		{
+			buffer[index++] = format[i];
+			if (index == size)
+				print_buffer(buffer, &index);
+			chars++;
+		}
+	}
+	print_buffer(buffer, &index);
+
+	va_end(ap);
+
+	return (chars);
+}
+
+/**
+ *print_buffer - print buffer
+ *@buffer: buffer
+ *@index: index of to add characters
+ */
+void print_buffer(char buffer[], int *index)
+{
+	if (*index > 0)
+		write(1, &buffer[0], *index);
+
+	*index = 0;
+}

@@ -1,1 +1,1 @@
-## first printf collaboration project
+Group project on printf function
