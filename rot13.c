@@ -1,33 +1,46 @@
 #include "main.h"
 
 /**
- * parse_R13 - substitute %R by argument number in rot13
- * @buff_dest: string to change
- * @arg: va_list char to change
- * @buff_count: index of dst where the R of %R is
- * Return: New index
+ * print_rot13 - prints a string using rot13
+ * @l: list of arguments from _printf
+ * @f: pointer to the struct flags that determines
+ * if a flag is passed to _printf
+ * Return: length of the printed string
  */
-int parse_R13(char *buff_dest, va_list arg, int buff_count)
+int print_rot13(va_list l, flags_t *f)
 {
-	char *str;
-	char *keys = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
-	char *keynew = "nopqrstuvwxyzabcdefghijklmNOPQRSTUVWXYZABCDEFGHIJKLM";
-	int i, j = 0;
+	int i, j;
+	char rot13[] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+	char ROT13[] = "nopqrstuvwxyzabcdefghijklmNOPQRSTUVWXYZABCDEFGHIJKLM";
+	char *s = va_arg(l, char *);
 
-	str = va_arg(arg, char *);
-	while (str[j])
+	(void)f;
+	for (j = 0; s[j]; j++)
 	{
-		for (i = 0; keys[i]; i++)
+		if (s[j] < 'A' || (s[j] > 'Z' && s[j] < 'a') || s[j] > 'z')
+			_putchar(s[j]);
+		else
 		{
-			if (str[j] == keys[i])
+			for (i = 0; i <= 52; i++)
 			{
-				buff_dest[buff_count] = keynew[i];
-				break;
+				if (s[j] == rot13[i])
+					_putchar(ROT13[i]);
 			}
-			buff_dest[buff_count] = str[j];
 		}
-		j++, buff_count++;
 	}
 
-	return (buff_count);
+	return (j);
+}
+
+/**
+ * print_percent - prints a percent
+ * @l: va_list arguments from _printf
+ * @f: pointer to the struct flags in which we turn the flags on
+ * Return: number of char printed
+ */
+int print_percent(va_list l, flags_t *f)
+{
+	(void)l;
+	(void)f;
+	return (_putchar('%'));
 }

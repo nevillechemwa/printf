@@ -9,7 +9,8 @@
 
 int _printf(const char *format, ...);
 void print_buffer(char buffer[], int *index);
-int parse_R13(char *buff_dest, va_list arg, int buff_count);
+int print_rot13(va_list l, flags_t *f);
+int print_percent(va_list l, flags_t *f);
 int handle_print(const char *fmt, int *i,
 va_list ap, char buffer[], int flags, int width, int precision, int size);
 
