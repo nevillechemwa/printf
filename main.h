@@ -2,13 +2,6 @@
 #define MAIN_H
 #include <stdarg.h>
 #include <stdio.h>
-<<<<<<< HEAD
-#include <stdlib.h>
-#include <limits.h>
-
-int _printf(const char *format, ...);
-void print_buffer(char buffer[], int *index);
-=======
 #include <unistd.h>
 
 #define UNUSED(x) (void)(x)
@@ -47,7 +40,6 @@ struct fmt
 typedef struct fmt fmt_t;
 
 int _printf(const char *format, ...);
->>>>>>> 5494473 (Team Project)
 int handle_print(const char *fmt, int *i,
 va_list list, char buffer[], int flags, int width, int precision, int size);
 
@@ -100,9 +92,6 @@ int print_reverse(va_list types, char buffer[],
 int print_rot13string(va_list types, char buffer[],
 	int flags, int width, int precision, int size);
 
-<<<<<<< HEAD
-#endif
-=======
 /* width handler */
 int handle_write_char(char c, char buffer[],
 	int flags, int width, int precision, int size);
@@ -126,4 +115,3 @@ long int convert_size_number(long int num, int size);
 long int convert_size_unsgnd(unsigned long int num, int size);
 
 #endif /* MAIN_H */
->>>>>>> 5494473 (Team Project)
