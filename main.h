@@ -18,7 +18,7 @@ int get_flags(const char *format, int *i);
 int get_width(const char *format, int *i, va_list ap);
 int get_precision(const char *format, int *i, va_list ap);
 int get_size(const char *format, int *i);
-
+int print_rot13(char *string_dest, va_list arg, int string_count);
 
 
 
